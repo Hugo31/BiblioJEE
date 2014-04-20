@@ -11,10 +11,19 @@ class LivreController {
 	def query
 	def srchResults
 	
+	def listLivre() {
+		[livre: Livre.list(params), livresCount: Livre.count()]
+	}
+	
 	def search = {
 	   query = params.q
 	   if(query){
-		   srchResults = searchableService.search(query)
+		   if(params.offset == null){
+			   params.offset = 0
+			   params.max = 5	   
+		   }
+		   srchResults = searchableService.search(query, params)
+		   
 		   render(view: "search",
 				  model: [searchResult: srchResults])
 	   }
@@ -38,7 +47,7 @@ class LivreController {
 		c.setTime(date);
 		c.add(Calendar.DATE, 1);
 		date = c.getTime();
-		flash.message = "Réservation effectuée avec succès. </br><span class='marge'>Code la réservation : " + code + ".</span></br><span class='marge'>Date limite de récuperation des livres : " + date + "</span>"
+		flash.message = "RÃ©servation effectuÃ©e avec succÃ¨s. </br><span class='marge'>Code la rÃ©servation : " + code + ".</span></br><span class='marge'>Date limite de rÃ©cuperation des livres : " + date + "</span>"
 		res.save(failOnError: true)
 		redirect(uri:'/')
 	}
@@ -56,7 +65,7 @@ class LivreController {
 			}
 			if(livresNonDisponible){
 				if(nombreLivresNonDisponibles == items.size()){
-					flash.message = "Aucun livre n'est disponible, votre réservation ne peut pas aboutir"
+					flash.message = "Aucun livre n'est disponible, votre rÃ©servation ne peut pas aboutir"
 				}
 				else{
 					def message = "Les livres suivants ne sont plus disponibles :"
@@ -104,20 +113,20 @@ class LivreController {
 			flash.message = "Ajout impossible, aucun &nbsp;exemplaire n'est disponible."
 		}
 		else{
-			boolean testExiste = false //utilis� pour tester si le livre est d�j� dans le panier
+			boolean testExiste = false //utilisï¿½ pour tester si le livre est dï¿½jï¿½ dans le panier
 			
 			def items = shoppingCartService.items
 			items.each {
-				if( com.metasieve.shoppingcart.Shoppable.findByShoppingItem(it).titre == params.q){//test d�j� dans panier
+				if( com.metasieve.shoppingcart.Shoppable.findByShoppingItem(it).titre == params.q){//test dï¿½jï¿½ dans panier
 					testExiste = true
 				}
 			}
 			if(!testExiste){
 				livre.addToShoppingCart()
-				flash.message = "Livre ajouté avec succès a votre panier"
+				flash.message = "Livre ajoutÃ© avec succÃ¨s a votre panier"
 			}
 			else{
-				flash.message = "Ajout impossible, ce livre est déjà dans votre panier."
+				flash.message = "Ajout impossible, ce livre est dÃ©jÃ  dans votre panier."
 			}
 		}
 		

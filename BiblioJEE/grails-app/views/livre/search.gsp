@@ -99,7 +99,10 @@
 						</tbody>
 			     	</table>
 	       		</div>
-	       		
+	       		 <div class="pagination">
+	       		 	<g:set var="params" value="${params.max = 5}" />
+					<g:paginate params="${params}" total="${searchResult.total}" />
+				</div>
 	          	
    			</g:if>
 
