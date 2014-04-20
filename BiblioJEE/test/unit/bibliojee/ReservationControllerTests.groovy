@@ -26,6 +26,11 @@ class ReservationControllerTests {
 
         assert model.reservationInstanceList.size() == 0
         assert model.reservationInstanceTotal == 0
+		
+		def model2 = controller.list(10)
+		
+		assert model2.reservationInstanceList.size() == 10
+        assert model2.reservationInstanceTotal == 10
     }
 
     void testCreate() {

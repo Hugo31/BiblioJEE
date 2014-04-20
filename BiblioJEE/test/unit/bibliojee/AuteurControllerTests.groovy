@@ -28,8 +28,8 @@ class AuteurControllerTests {
 		
 		def model2 = controller.list(10)
 		
-		assert model.auteurInstanceList.size() == 10
-		assert model.auteurInstanceTotal == 10
+		assert model2.auteurInstanceList.size() == 10
+		assert model2.auteurInstanceTotal == 10
     }
 
     void testCreate() {
@@ -133,7 +133,6 @@ class AuteurControllerTests {
         assert model.auteurInstance != null
         assert model.auteurInstance.errors.getFieldError('version')
         assert flash.message != null
-		
 		
     }
 

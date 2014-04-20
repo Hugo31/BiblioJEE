@@ -26,6 +26,11 @@ class LivreControllerTests {
 
         assert model.livreInstanceList.size() == 0
         assert model.livreInstanceTotal == 0
+		
+		def model2 = controller.list(10)
+		
+		assert model2.livreInstanceList.size() == 10
+		assert model2.livreInstanceTotal == 10
     }
 
     void testCreate() {

@@ -26,6 +26,11 @@ class QuantityControllerTests {
 
         assert model.quantityInstanceList.size() == 0
         assert model.quantityInstanceTotal == 0
+		
+		def model2 = controller.list()
+		
+		assert model2.quantityInstanceList.size() == 10
+		assert model2.quantityInstanceTotal == 10
     }
 
     void testCreate() {

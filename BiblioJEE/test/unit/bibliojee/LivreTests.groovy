@@ -13,19 +13,20 @@ import org.junit.*
 @TestFor(Livre)
 class LivreTests extends TestCase {
 
-	TypeDocument t = new TypeDocument(intitule: "Nouveauté")
+	TypeDocument t = new TypeDocument(intitule: "Nouveautï¿½")
 	
     @Test
     void testToString() {
-		Livre l = new Livre(titre: "Hunger games [Texte imprimé]", nombreExemplaires: 3, nombreExemplairesDisponibles: 2, type: t)
-		assertEquals("Hunger games [Texte imprimé]", l.toString())
+		Livre l = new Livre(titre: "Hunger games [Texte imprimÃ©]", nombreExemplaires: 3, nombreExemplairesDisponibles: 2, type: t)
+		assertEquals("Hunger games [Texte imprimÃ©]", l.toString())
 	}
 	
 	@Test
 	void testLivre() {
 		Livre l = null
 		assertEquals(null, l)
-		l =new Livre(titre: "Hunger games [Texte imprimé]", nombreExemplaires: 3, nombreExemplairesDisponibles: 2, type: t)
-		assertEquals("Hunger games [Texte imprimé]", l.toString())
+		Auteur a = new Auteur(nom: "Collins", prenom: "Suzanne")
+		l =new Livre(titre: "Hunger games [Texte imprimÃ©]", nombreExemplaires: 3, nombreExemplairesDisponibles: 2, type: t, auteurs:a)
+		assertEquals("Hunger games [Texte imprimÃ©]", l.toString())
 	}
 }

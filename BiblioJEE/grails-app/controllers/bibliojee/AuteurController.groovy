@@ -4,6 +4,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class AuteurController {
 
+	def scaffold = Auteur
+	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {

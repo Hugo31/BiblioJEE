@@ -26,6 +26,11 @@ class TypeDocumentControllerTests {
 
         assert model.typeDocumentInstanceList.size() == 0
         assert model.typeDocumentInstanceTotal == 0
+		
+		def model2 = controller.list(10)
+		
+		assert model2.typeDocumentInstanceList.size() == 10
+        assert model2.typeDocumentInstanceTotal == 10
     }
 
     void testCreate() {

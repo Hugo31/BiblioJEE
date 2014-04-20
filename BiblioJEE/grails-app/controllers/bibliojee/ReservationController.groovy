@@ -4,6 +4,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class ReservationController {
 
+	def scaffold = Reservation
+	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {

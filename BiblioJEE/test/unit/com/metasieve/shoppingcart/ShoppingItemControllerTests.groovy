@@ -26,6 +26,11 @@ class ShoppingItemControllerTests {
 
         assert model.shoppingItemInstanceList.size() == 0
         assert model.shoppingItemInstanceTotal == 0
+		
+		def model2 = controller.list(10)
+		
+		assert model2.shoppingItemInstanceList.size() == 10
+		assert model2.shoppingItemInstanceTotal == 10
     }
 
     void testCreate() {

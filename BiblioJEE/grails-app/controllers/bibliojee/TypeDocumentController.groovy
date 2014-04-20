@@ -4,6 +4,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class TypeDocumentController {
 
+	def scaffold = TypeDocument 
+	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
