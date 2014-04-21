@@ -87,24 +87,19 @@
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="status" role="complementary">
-			<h1>Application Status</h1>
+			<h1>Marche à suivre</h1>
 			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
+				<li>1. Choississez un livre parmis notre catalogue</li>
+				<li>2. Ajouter le livre dans votre panier (un seul exemplaire)</li>
+				<li>2.2 Ajouter d'autres livres si vous le souhaitez</li>
+				<li>3. Validez votre panier</li>
+				<li>3.2 Si un exemplaire n'est plus disponible, vous ne pouvez pas le réserver
+				mais vous pouvez quand même effectuer votre commande (sans le livre manquant)</li>
+				<li>4. Un code de réservation vous sera attribué</li>
+				<li>5. Vous avez 24h pour récupérer votre commande grace à votre code de réservation</li>
+				<li>5.2 Dépasser ce délais, votre commande sera annulé</li>
 			</ul>
-			<h1>Installed Plugins</h1>
-			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
-			</ul>
+			<h1>Bonne lecture !</h1>
 		</div>
 		<div id="page-body" role="main">
 		
@@ -115,21 +110,16 @@
 			<h1>Accueil</h1>
 
 			<p>Bienvenue sur le site de réservation en ligne BiblioJ.<br />
-			Vous pouvez réserver les livres de notre catalogue via un système de panier.</p>
+			Vous avez la possibilité d'effectuer des réservation en ligne sur les livres
+			que vous souhaitez emprunter sans vous soucier si ce dernier est encore disponible<br/>
+			BiblioJ vous permet de faire vos réservations de manière simple et rapide<br />
+			Vous pouvez choisir les livres de notre catalogue. Essayez dès maintenant !</p>
 			
 			<div id=usage-list">
-				<h1><g:link controller="livre" action="search">Recherche de livres</g:link></h1>
-				<h1><g:link controller="livre" action="panier">Mon panier</g:link></h1>
-			</div>
-			
-			<div id="controller-list" role="navigation">
-				<h2>Controllers pour test :</h2>
-				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-					</g:each>
-				</ul>
+				<h1>Faire une <g:link controller="livre" action="search">recherche de livres</g:link></h1>
+				<h1>Voir <g:link controller="livre" action="panier">mon panier</g:link></h1>
 			</div>
 		</div>
+		Ce site a été développé par GUIGNARD Hugo et LODOVICI Bénédicte
 	</body>
 </html>

@@ -2,7 +2,10 @@ package bibliojee
 
 
 
+import java.util.Date;
+
 import org.junit.*
+
 import grails.test.mixin.*
 
 @TestFor(ReservationController)
@@ -11,8 +14,8 @@ class ReservationControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params.code = 123
+		params.dateReservation = new Date(10, 10, 2014)
     }
 
     void testIndex() {
@@ -27,10 +30,6 @@ class ReservationControllerTests {
         assert model.reservationInstanceList.size() == 0
         assert model.reservationInstanceTotal == 0
 		
-		def model2 = controller.list(10)
-		
-		assert model2.reservationInstanceList.size() == 10
-        assert model2.reservationInstanceTotal == 10
     }
 
     void testCreate() {
@@ -134,6 +133,15 @@ class ReservationControllerTests {
         assert model.reservationInstance != null
         assert model.reservationInstance.errors.getFieldError('version')
         assert flash.message != null
+		
+		//params.version = -1
+		params.version = null
+		controller.update()
+
+		assert view == "/reservation/edit"
+		assert model.reservationInstance != null
+		//assert model.reservationInstance.errors.getFieldError('version')
+		assert flash.message != null
     }
 
     void testDelete() {

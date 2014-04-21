@@ -10,9 +10,11 @@ import grails.test.mixin.*
 class LivreControllerTests {
 
     def populateValidParams(params) {
-        assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+       assert params != null
+       params.titre = "Bouquin"
+	   params.nombreExemplaires = 10
+		params.nombreExemplairesDisponibles = 5
+		params.type = new TypeDocument(intitule: "Nouveauté")
     }
 
     void testIndex() {
@@ -27,10 +29,6 @@ class LivreControllerTests {
         assert model.livreInstanceList.size() == 0
         assert model.livreInstanceTotal == 0
 		
-		def model2 = controller.list(10)
-		
-		assert model2.livreInstanceList.size() == 10
-		assert model2.livreInstanceTotal == 10
     }
 
     void testCreate() {
@@ -134,6 +132,7 @@ class LivreControllerTests {
         assert model.livreInstance != null
         assert model.livreInstance.errors.getFieldError('version')
         assert flash.message != null
+		
     }
 
     void testDelete() {
@@ -157,4 +156,9 @@ class LivreControllerTests {
         assert Livre.get(livre.id) == null
         assert response.redirectedUrl == '/livre/list'
     }
+	
+	
+	void testAjoutPanier() {
+		
+	}
 }

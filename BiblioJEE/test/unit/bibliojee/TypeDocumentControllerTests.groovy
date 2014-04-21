@@ -3,6 +3,7 @@ package bibliojee
 
 
 import org.junit.*
+
 import grails.test.mixin.*
 
 @TestFor(TypeDocumentController)
@@ -11,8 +12,7 @@ class TypeDocumentControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+		params.intitule = "Article"
     }
 
     void testIndex() {
@@ -26,11 +26,6 @@ class TypeDocumentControllerTests {
 
         assert model.typeDocumentInstanceList.size() == 0
         assert model.typeDocumentInstanceTotal == 0
-		
-		def model2 = controller.list(10)
-		
-		assert model2.typeDocumentInstanceList.size() == 10
-        assert model2.typeDocumentInstanceTotal == 10
     }
 
     void testCreate() {

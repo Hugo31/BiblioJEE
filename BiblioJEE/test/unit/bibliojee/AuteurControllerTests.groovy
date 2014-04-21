@@ -10,8 +10,8 @@ class AuteurControllerTests {
 	
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params.nom = "Auteur"
+		params.prenom = "The"
     }
 
     void testIndex() {
@@ -26,10 +26,6 @@ class AuteurControllerTests {
         assert model.auteurInstanceList.size() == 0
         assert model.auteurInstanceTotal == 0
 		
-		def model2 = controller.list(10)
-		
-		assert model2.auteurInstanceList.size() == 10
-		assert model2.auteurInstanceTotal == 10
     }
 
     void testCreate() {
